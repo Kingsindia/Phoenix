@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\BuildVersion.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\CommonCodeAnalysis.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\CommonLibrary.props" />
+
+  <PropertyGroup>
+    <Description></Description>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <RootNamespace>Contoso.Phoenix.Data.Xml</RootNamespace>
+    <AssemblyName>Phoenix.Data.Xml</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pluralize.NET" version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\Data.Common\Data.Common.csproj" />
+    <ProjectReference Include="..\Data.Entity.Common\Data.Entity.Common.csproj" />
+  </ItemGroup>
+</Project>

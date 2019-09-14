@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\BuildVersion.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\CommonCodeAnalysis.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\CommonApplication.props" />
+
+  <PropertyGroup>
+    <Description></Description>
+    <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <RootNamespace>Contoso.Phoenix.Startup</RootNamespace>
+    <AssemblyName>Phoenix.Startup</AssemblyName>
+    <PackageId>Contoso.Phoenix.Startup</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" version="2.1.1" />
+    <PackageReference Include=" Microsoft.Extensions.Configuration.Json" version="2.1.1" />
+  </ItemGroup>
+ 
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\Data.Xml\Data.Xml.csproj" />
+    <ProjectReference Include="..\Data.Common\Data.Common.csproj" />
+    <ProjectReference Include="..\Data.Entity.Model\Data.Entity.Model.csproj" />
+    <ProjectReference Include="..\Logic\Logic.csproj" />
+  </ItemGroup>
+ 
+  <ItemGroup>
+    <None Update="appSettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

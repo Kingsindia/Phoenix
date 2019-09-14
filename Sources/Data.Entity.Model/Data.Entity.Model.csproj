@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\BuildVersion.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\CommonCodeAnalysis.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\CommonLibrary.props" />
+
+  <PropertyGroup>
+    <Description></Description>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <RootNamespace>Contoso.Phoenix.Data.Entity.Model</RootNamespace>
+    <AssemblyName>Phoenix.Data.Entity.Model</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data.Entity.Common\Data.Entity.Common.csproj" />
+  </ItemGroup>
+</Project>

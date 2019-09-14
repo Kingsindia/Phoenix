@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\BuildVersion.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\CommonCodeAnalysis.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\CommonLibrary.props" />
+
+  <PropertyGroup>
+    <Description></Description>
+    <TargetFramework>net461</TargetFramework>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <RootNamespace>Contoso.Phoenix.Tests.Common.Tests</RootNamespace>
+    <AssemblyName>Phoenix.Tests.Common.Tests</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoFixture.Xunit2" Version="4.2.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+    <PackageReference Include="NSubstitute" Version="3.1.0" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Common.csproj" />
+    <ProjectReference Include="..\..\..\Data.Common\Data.Common.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)..\BuildVersion.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\CommonCodeAnalysis.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\CommonLibrary.props" />
+
+  <PropertyGroup>
+    <Description></Description>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <RootNamespace>Contoso.Phoenix.Common</RootNamespace>
+    <AssemblyName>Phoenix.Common</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.1.1" />
+    <PackageReference Include="SimpleInjector" version="4.7.1" />
+  </ItemGroup>
+</Project>

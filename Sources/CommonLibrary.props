@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)\CommonSharedAssemblyInfo.cs" Link="Properties\CommonSharedAssemblyInfo.cs" />
+  </ItemGroup>
+  <PropertyGroup>
+    <Copyright>Copyright (c) Contoso</Copyright>
+    <Product>Phoenix</Product>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+</Project>
