@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CommonCodeAnalysis.props = CommonCodeAnalysis.props
 		CommonLibrary.props = CommonLibrary.props
 		CommonSharedAssemblyInfo.cs = CommonSharedAssemblyInfo.cs
+		Employee.xml = Employee.xml
+		NuGet.config = NuGet.config
 		Phoenix.ruleset = Phoenix.ruleset
 		stylecop.json = stylecop.json
 	EndProjectSection
@@ -32,7 +34,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AAF81EB4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{0F379E85-2DB1-462A-A947-15F7E9F787B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Tests", "Tests\Unit\Common.Tests\Common.Tests.csproj", "{EC32A026-A9E8-4754-B1FC-B270242BB1E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Tests", "Tests\Unit\Common.Tests\Common.Tests.csproj", "{EC32A026-A9E8-4754-B1FC-B270242BB1E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

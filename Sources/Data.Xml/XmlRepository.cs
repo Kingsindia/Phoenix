@@ -44,6 +44,11 @@ namespace Contoso.Phoenix.Data.Xml
 
         public Task<TKey> AddAsync(TEntity model)
         {
+            if (_items.Any(i => i.Id.Equals(model.Id)))
+            {
+                throw new EntityConflictException(typeof(TEntity).Name, "Entity already exists.");
+            }
+
             _items.Add(model);
 
             return Task.FromResult(model.Id);
