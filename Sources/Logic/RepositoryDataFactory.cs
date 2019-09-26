@@ -32,6 +32,8 @@ namespace Contoso.Phoenix.Logic
                 {
                     case "Xml":
                         return _container.GetInstance<XmlRepository<TEntity, TKey>>();
+                    case "Cosmos":
+                        return _container.GetInstance<XmlRepository<TEntity, TKey>>();
                 }
             }
             catch (Exception ex)

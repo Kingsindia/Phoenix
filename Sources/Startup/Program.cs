@@ -18,7 +18,9 @@ namespace Contoso.Phoenix.Startup
 {
     internal class Program
     {
-        private static IEmployeeLogic _employeeLogic;
+        private static IPostLogic _postLogic;
+        private static IContentLogic _contentLogic;
+
 
         internal static void Main(string[] args)
         {
@@ -30,36 +32,28 @@ namespace Contoso.Phoenix.Startup
         {
             var container = SetupDependencyContainer();
 
-            _employeeLogic = container.GetInstance<IEmployeeLogic>();
+            _postLogic = container.GetInstance<IPostLogic>();
+            _contentLogic = container.GetInstance<IContentLogic>();
 
-            /* Workflow: Will explain/discuss more during discussion */
+            await _postLogic.GetAllAsync();
 
-            Console.WriteLine($"Employee Count {await GetCount()}");
+            Console.WriteLine($"Post Count {await GetCount()}");
 
-            await _employeeLogic.AddAsync(new Employee { Id = 1, Age = 32, Name = "Rajarajan" });
+            await _postLogic.Create(new Post
+            {
+                Id = Guid.NewGuid(),
+                PostTitle = "MyPost",
+                Contents = new System.Collections.Generic.List<Content> { new Content { Id = Guid.NewGuid() } },
+                Likes = new System.Collections.Generic.List<LikeInfo> { new LikeInfo { Id = Guid.NewGuid() } }
+            });
 
-            Console.WriteLine($"Employee Count {await GetCount()}");
+            Console.WriteLine($"Post Count {await GetCount()}");
 
-            await _employeeLogic.AddAsync(new Employee { Id = 2, Age = 33, Name = "Selva" });
+            var contentId = Guid.NewGuid();
 
-            Console.WriteLine($"Employee Count {await GetCount()}");
+            // Upload to blob...
 
-            await _employeeLogic.RemoveAsync(5);
-
-            Console.WriteLine($"Employee Count {await GetCount()}");
-
-            await _employeeLogic.AddAsync(new Employee { Id = 7, Age = 33, Name = "Selva", Address = new Address { DoorNumber = "248", Street = "East street", State = "TN", Town = "Salem" } });
-
-            Console.WriteLine($"Employee Count {await GetCount()}");
-
-            var employee = await _employeeLogic.GetAsync(1);
-            employee.Designation = "Sr. Advanced Cloud Developer";
-
-            await _employeeLogic.UpdateAsync(employee);
-
-            await _employeeLogic.RemoveAsync(7);
-
-            Console.WriteLine($"Employee Count {await GetCount()}");
+            await _contentLogic.Create(new Content {Id = contentId, ContentType = ContentTypeEnum.Image});
 
             // ... and more!
             // Thank you.
@@ -67,7 +61,7 @@ namespace Contoso.Phoenix.Startup
 
         private static async Task<int?> GetCount()
         {
-            return (await _employeeLogic.GetAllAsync())?.Count;
+            return (await _postLogic.GetAllAsync())?.Count;
         }
 
         private static Container SetupDependencyContainer()
@@ -88,10 +82,15 @@ namespace Contoso.Phoenix.Startup
 
             container.RegisterSingleton<IPluralize, Pluralizer>();
             container.RegisterSingleton<IXmlDataProvider, XmlDataProvider>();
-            container.RegisterSingleton<IRepositoryDataFactory<Employee, int>, RepositoryDataFactory<Employee, int>>();
-            container.RegisterSingleton<IRepository<Employee, int>, XmlRepository<Employee, int>>();
+            container.RegisterSingleton<IRepositoryDataFactory<Post, Guid>, RepositoryDataFactory<Post, Guid>>();
+            container.RegisterSingleton<IRepository<Post, Guid>, XmlRepository<Post, Guid>>();
 
-            container.RegisterSingleton<IEmployeeLogic, EmployeeLogic>();
+            container.RegisterSingleton<IPostLogic, PostLogic>();
+
+            container.RegisterSingleton<IRepositoryDataFactory<Content, Guid>, RepositoryDataFactory<Content, Guid>>();
+            container.RegisterSingleton<IRepository<Content, Guid>, XmlRepository<Content, Guid>>();
+
+            container.RegisterSingleton<IContentLogic, ContentLogic>();
 
             container.Verify();
 
